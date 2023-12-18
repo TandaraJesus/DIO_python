@@ -1,0 +1,50 @@
+Menu = """
+[d] Depositar
+[s] Sacar
+[e] Extrato
+[q] Sair
+"""
+
+saldo = 0
+limite = 500
+extrato = ""
+numero_saques = 0
+LIMITE_SAQUES = 3
+
+while True:
+  opcao = input(Menu)
+
+  if opcao == 'd':
+    deposito = int (input ('Insira o valor que deseja depositar:'))
+
+    if deposito > 0:
+      saldo += deposito
+      extrato += deposito
+      print ('O valor depositado foi:R${}'.format(deposito)
+    else:
+      print ("Deposite um valor maior que 1")
+
+
+  elif opcao == 's':
+    saque = float (input('Insira o valor que deseja sacar: '))
+
+    limite = 500 - saque
+
+    if numero_saques <= LIMITE_SAQUES and saque <= saldo and saldo <= limite:
+      print('O valor sacador foi: RS{}'.format(saque))
+      extrato += saque
+      saldo -+ saque
+      numero_saques += 1
+    else:
+      print ('Nao foi possível sacar')
+
+  elif opcao == 'e':
+    print (extrato.center(20, '#'))
+    print ('o saldo da conta é:{}'.format (saldo))
+    print ("Os depósitos realizados foram:{}".depositos)
+
+  elif opcao == 'q':
+    break
+
+  else:
+    print ('Operação inválida, por favor, selecione novamente a opção desejada')
